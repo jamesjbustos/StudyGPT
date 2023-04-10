@@ -3,3 +3,4 @@ streamlit
 openai
 streamlit-pills
 streamlit-extras
+streamlit-chat
