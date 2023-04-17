@@ -1,8 +1,8 @@
 # Import necessary libraries
 import streamlit as st
 from langchain.chains import ConversationChain
-from langchain.chains.conversation.memory import ConversationEntityMemory
-from langchain.chains.conversation.prompt import ENTITY_MEMORY_CONVERSATION_TEMPLATE
+from langchain.prompts.prompt import PromptTemplate
+from langchain.memory import ConversationBufferWindowMemory
 from langchain.chat_models import ChatOpenAI
 from streamlit_chat import message
 
@@ -22,31 +22,39 @@ if "input" not in st.session_state:
 if "stored_session" not in st.session_state:
     st.session_state["stored_session"] = []
 
-
+#Load API key
 api_key = st.secrets["api_secret"]
 
 st.title("🤖 AI Tutor")
 
-def load_chain():
-    """Logic for loading the chain"""
-    llm = ChatOpenAI(
+llm = ChatOpenAI(
         temperature=0,
         openai_api_key=api_key,
-        model_name="gpt-3.5-turbo",
+        model_name="gpt-4",
         verbose=False
-    )
-    return llm
+        )
 
-llm = load_chain()
+template = """ You are a tutor that always responds in the Socratic style. You *never* give the student the answer, but always try to ask just the right question to help them learn to think for themselves. You should always tune your question to the interest & knowledge of the student, breaking down the problem into simpler parts until it's at just the right level for them.
+
+{history}
+Human: {input}
+AI:
+"""
 
 #Create conversation memory
 if 'entity_memory' not in st.session_state:
-    st.session_state.entity_memory = ConversationEntityMemory(llm = llm, k = 10)
-    
+    st.session_state.entity_memory = ConversationBufferWindowMemory(k=10)
+
+#Create prompt template
+prompt = PromptTemplate(
+    input_variables=["history", "input"], 
+    template=template
+)
+
 #Create conversation chain
 Conversation = ConversationChain (
     llm = llm,
-    prompt=ENTITY_MEMORY_CONVERSATION_TEMPLATE,
+    prompt=prompt,
     memory=st.session_state.entity_memory,
 )
 
@@ -54,7 +62,6 @@ Conversation = ConversationChain (
 def get_text():
     input_text = st.text_input("You: ","Hello, how are you?", key="input")
     return input_text 
-
 
 user_input = get_text()
 

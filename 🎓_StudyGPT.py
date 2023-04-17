@@ -6,7 +6,8 @@ from streamlit_extras.switch_page_button import switch_page
 # Create a Streamlit page config
 st.set_page_config(
     page_title="StudyGPT",
-    page_icon=":mortar_board:"
+    page_icon=":mortar_board:",
+    initial_sidebar_state = "collapsed"
 )
 
 # Title
@@ -18,19 +19,19 @@ options = [
     "AI Tutor",
     "Doc Q&A",
     "Video Q&A",
-    "Flash Card Generator"
+    "Crash Course"
 ]
 icons = [
     "🤖",
     "📖",
     "📹",
-    "🗂"
+    "🚀"
 ]
 category_to_page = {
     "AI Tutor": "ai_tutor",
     "Doc Q&A": "doc_q&a",
     "Video Q&A": "video_q&a",
-    "Flash Card Generator": "flash_card_generator",
+    "Crash Course": "crash_course",
 }
 
 category = pills("Choose a tool", options, icons, index=None, clearable=True)
