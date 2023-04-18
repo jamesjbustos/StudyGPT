@@ -3,8 +3,3 @@ streamlit
 openai
 streamlit-pills
 streamlit-extras
-
-# streamlit-chat
-
-# Forked streamlit-chat package with markdown support
-git+https://github.com/0toshigami/st-chat.git

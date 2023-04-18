@@ -4,75 +4,93 @@ from langchain.chains import ConversationChain
 from langchain.prompts.prompt import PromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.chat_models import ChatOpenAI
-from streamlit_chat import message
 
-# Create a Streamlit page config
-st.set_page_config(
-    page_title="StudyGPT",
-    page_icon=":mortar_board:"
-)
+def initialize_streamlit():
+    """Set up Streamlit page configurations and title."""
+    st.set_page_config(
+        page_title="StudyGPT",
+        page_icon=":mortar_board:"
+    )
+    st.title("🤖 AI Tutor")
 
-#Initialize session states
-if "generated" not in st.session_state:
-    st.session_state["generated"] = []
-if "past" not in st.session_state:
-    st.session_state["past"] = []
-if "input" not in st.session_state:
-    st.session_state["input"] = ""
-if "stored_session" not in st.session_state:
-    st.session_state["stored_session"] = []
+def initialize_session_states():
+    """Initialize session states for entity_memory, generated, and past."""
+    if 'entity_memory' not in st.session_state:
+        st.session_state.entity_memory = ConversationBufferWindowMemory(k=10)
 
-#Load API key
-api_key = st.secrets["api_secret"]
+    if "generated" not in st.session_state:
+        st.session_state["generated"] = []
 
-st.title("🤖 AI Tutor")
+    if "past" not in st.session_state:
+        st.session_state["past"] = []
 
-llm = ChatOpenAI(
+def load_prompt_template():
+    """Load the prompt template from the text file."""
+    with open("ai_tutor.txt", "r") as f:
+        template = f.read()
+    return template
+
+def load_chain(api_key, template):
+    """Initialize the ConversationChain object."""
+    llm = ChatOpenAI(
         temperature=0,
         openai_api_key=api_key,
-        model_name="gpt-4",
+        model_name="gpt-3.5-turbo",
         verbose=False
-        )
+    )
 
-template = """ You are a tutor that always responds in the Socratic style. You *never* give the student the answer, but always try to ask just the right question to help them learn to think for themselves. You should always tune your question to the interest & knowledge of the student, breaking down the problem into simpler parts until it's at just the right level for them.
+    prompt = PromptTemplate(
+        input_variables=["history", "input"],
+        template=template
+    )
 
-{history}
-Human: {input}
-AI:
-"""
+    conversation = ConversationChain(
+        llm=llm,
+        prompt=prompt,
+        memory=st.session_state.entity_memory,
+    )
 
-#Create conversation memory
-if 'entity_memory' not in st.session_state:
-    st.session_state.entity_memory = ConversationBufferWindowMemory(k=10)
+    return conversation
 
-#Create prompt template
-prompt = PromptTemplate(
-    input_variables=["history", "input"], 
-    template=template
-)
+def get_response(conversation, input_text):
+    """Get a response from the conversation object based on the input_text."""
+    output = conversation.run(input=input_text)
+    return output
 
-#Create conversation chain
-Conversation = ConversationChain (
-    llm = llm,
-    prompt=prompt,
-    memory=st.session_state.entity_memory,
-)
+def display_previous_messages():
+    """Display previous messages in the chat session."""
+    if st.session_state["past"]:
+        for i in range(len(st.session_state["past"])):
+            answer_container.markdown(f"""🤓 **YOU:** {st.session_state["past"][i]}""")
+            if i < len(st.session_state["generated"]):
+                answer_container.markdown(f"""🤖 **AI:** {st.session_state["generated"][i]}""")
 
-#Define function to get user input
-def get_text():
-    input_text = st.text_input("You: ","Hello, how are you?", key="input")
-    return input_text 
+def handle_form_submission(conversation):
+    """Handle form submission and update the chat session with new messages."""
+    if submitted and input_text:
+        st.session_state.past.append(input_text)
+        answer_container.markdown(f"""🤓 **YOU:** {input_text}""")
 
-user_input = get_text()
+        with st.spinner("Wait for responding..."):
+            answer = get_response(conversation, input_text)
+            answer_container.markdown(f"""🤖 **AI:** {answer}""")
 
-if user_input:
-    output = Conversation.run(input = user_input)
-    st.session_state.past.append(user_input)
-    st.session_state.generated.append(output)
+        if answer:
+            st.session_state.generated.append(answer)
 
-if st.session_state['generated']:
+# Main code
+initialize_streamlit()
+initialize_session_states()
+api_key = st.secrets["api_secret"]
+template = load_prompt_template()
+conversation = load_chain(api_key, template)
+answer_container = st.container()
+ask_form = st.empty()
 
-    for i in range(len(st.session_state['generated'])-1, -1, -1):
-        message(st.session_state["generated"][i], key=str(i))
-        message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
+display_previous_messages()
 
+with ask_form.form("chat_form"):
+    col1, col2 = st.columns([10, 1])
+    input_text = col1.text_area("🤓 You: ", "Hello, can you help me?", key="input", max_chars=2000, label_visibility='collapsed')
+    submitted = col2.form_submit_button("💬")
+    handle_form_submission(conversation)
