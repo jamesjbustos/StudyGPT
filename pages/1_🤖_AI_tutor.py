@@ -12,6 +12,7 @@ def initialize_streamlit():
         page_icon=":mortar_board:"
     )
     st.title("🤖 AI Tutor")
+    st.caption("🌟 Your AI study partner, ask me anything!")
 
 def initialize_session_states():
     """Initialize session states for entity_memory, generated, and past."""
