@@ -72,7 +72,7 @@ def handle_form_submission(conversation):
         st.session_state.past.append(input_text)
         answer_container.markdown(f"""🤓 **YOU:** {input_text}""")
 
-        with st.spinner("Wait for responding..."):
+        with st.spinner("Wait for response..."):
             answer = get_response(conversation, input_text)
             answer_container.markdown(f"""🤖 **AI:** {answer}""")
 
@@ -90,8 +90,8 @@ ask_form = st.empty()
 
 display_previous_messages()
 
-with ask_form.form("chat_form"):
+with ask_form.form("chat_form", clear_on_submit=True):
     col1, col2 = st.columns([10, 1])
-    input_text = col1.text_area("🤓 You: ", "Hello, can you help me?", key="input", max_chars=2000, label_visibility='collapsed')
+    input_text = col1.text_area(" ", max_chars=2000, key="input", placeholder="Type your question here...", label_visibility="collapsed",)
     submitted = col2.form_submit_button("💬")
     handle_form_submission(conversation)
