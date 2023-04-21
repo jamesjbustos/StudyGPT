@@ -82,7 +82,7 @@ def handle_form_submission(conversation):
 # Main code
 initialize_streamlit()
 initialize_session_states()
-api_key = st.secrets["api_secret"]
+api_key = st.secrets["OPENAI_API_KEY"]
 template = load_prompt_template()
 conversation = load_chain(api_key, template)
 answer_container = st.container()

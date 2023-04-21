@@ -19,18 +19,21 @@ options = [
     "AI Tutor",
     "Doc Q&A",
     "Video Q&A",
+    "CSV Q&A",
     "Crash Course"
 ]
 icons = [
     "🤖",
     "📖",
     "📹",
+    "📈",
     "🚀"
 ]
 category_to_page = {
     "AI Tutor": "ai_tutor",
     "Doc Q&A": "doc_q&a",
     "Video Q&A": "video_q&a",
+    "CSV Q&A": "csv_q&a",
     "Crash Course": "crash_course",
 }
 
