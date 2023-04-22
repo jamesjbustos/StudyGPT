@@ -4,3 +4,4 @@ openai
 streamlit-pills
 streamlit-extras
 llama-index
+pinecone-client
