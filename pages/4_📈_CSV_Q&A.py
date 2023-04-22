@@ -49,23 +49,23 @@ if uploaded_file is not None:
     SimpleCSVReader = download_loader("SimpleCSVReader")
     loader = SimpleCSVReader()
     documents = loader.load_data(file=Path(uploaded_file_path))
-    
+
     # Pinecone intialization
     pinecone.init(
-        api_key=pinecone_api_key, 
+        api_key=pinecone_api_key,
         environment=pinecone_enviroment
     )
     pinecone_index = pinecone.Index("langchainjsfundamentals")
-    
-    # Display uploaded CSV file as DataFrame (new lines added)
+
+    # Display uploaded CSV file as DataFrame
     df = pd.read_csv(uploaded_file_path)
     st.dataframe(df)
-    
+
     # Define llm and index
     llm_predictor = LLMPredictor(llm=OpenAI(temperature=0, model_name="text-davinci-003"))
     prompt_helper = PromptHelper(max_input_size=4096, num_output=256, max_chunk_overlap=20)
     service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
-    
+
     # Create the GPTPineconeIndex
     index = GPTPineconeIndex.from_documents(
         documents,
@@ -77,11 +77,11 @@ if uploaded_file is not None:
 if index is not None:
     with st.form("chat_form", clear_on_submit=True):
         col1, col2 = st.columns([10, 1])
-        user_prompt = col1.text_area(" ", max_chars=2000, key="prompt", placeholder="Type your question here...", label_visibility="collapsed")
+        user_prompt = col1.text_area(" ", max_chars=2000, key="prompt",
+                                      placeholder="Type your question here...", label_visibility="collapsed")
         submitted = col2.form_submit_button("💬")
 
     if submitted and user_prompt:
         st.session_state.csv_response = index.query(user_prompt)
         response_md = f"🤖 **AI:** {st.session_state.csv_response}\n\n---"
         st.markdown(response_md)
-
