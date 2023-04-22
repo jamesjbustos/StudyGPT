@@ -55,7 +55,7 @@ if uploaded_file is not None:
         api_key=pinecone_api_key,
         environment=pinecone_enviroment
     )
-    pinecone_index = pinecone.Index("langchainjsfundamentals")
+    pinecone_index = pinecone.Index("studygpt")
 
     # Display uploaded CSV file as DataFrame
     df = pd.read_csv(uploaded_file_path)
@@ -84,5 +84,5 @@ if index is not None:
     if submitted and user_prompt:
         with st.spinner("💭 Waiting for response..."):
             st.session_state.csv_response = index.query(user_prompt)
-        response_md = f"\n🤖 **AI:** {st.session_state.csv_response}\n\n"
+        response_md = f"🤖 **AI:** {st.session_state.csv_response}\n\n"
         st.markdown(response_md)
