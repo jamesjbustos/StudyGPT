@@ -72,7 +72,7 @@ def handle_form_submission(conversation):
         st.session_state.past.append(input_text)
         answer_container.markdown(f"""🤓 **YOU:** {input_text}""")
 
-        with st.spinner("Wait for response..."):
+        with st.spinner("💭 Waiting for response..."):
             answer = get_response(conversation, input_text)
             answer_container.markdown(f"""🤖 **AI:** {answer}""")
 
