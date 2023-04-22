@@ -77,5 +77,5 @@ if index is not None:
     if submitted and user_prompt:
         with st.spinner("💭 Waiting for response..."):
             st.session_state.doc_response = index.query(user_prompt)
-        response_md = f"🤖 **AI:** {st.session_state.doc_response}\n\n---"
+        response_md = f"\n🤖 **AI:** {st.session_state.doc_response}\n\n"
         st.markdown(response_md)

@@ -82,6 +82,7 @@ if index is not None:
         submitted = col2.form_submit_button("💬")
 
     if submitted and user_prompt:
-        st.session_state.csv_response = index.query(user_prompt)
-        response_md = f"🤖 **AI:** {st.session_state.csv_response}\n\n---"
+        with st.spinner("💭 Waiting for response..."):
+            st.session_state.csv_response = index.query(user_prompt)
+        response_md = f"\n🤖 **AI:** {st.session_state.csv_response}\n\n"
         st.markdown(response_md)
