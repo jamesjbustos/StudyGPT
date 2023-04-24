@@ -1,5 +1,6 @@
+import openai
 import streamlit as st
-
+import re
 
 # Streamlit page configurations and title
 st.set_page_config(
