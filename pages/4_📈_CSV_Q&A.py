@@ -14,7 +14,7 @@ st.set_page_config(
     page_icon=":mortar_board:"
 )
 st.title("📈 CSV Q&A")
-st.caption("🌟 Your personal CSV data assistant - upload and start asking questions!")
+st.caption("✨ Your personal CSV data assistant - upload and start asking questions!")
 
 index = None
 

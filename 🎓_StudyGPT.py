@@ -12,29 +12,32 @@ st.set_page_config(
 
 # Title
 st.title("🎓StudyGPT")
-st.subheader("Powered by :blue[OpenAI] + :blue[Langchain] + :blue[Streamlit]")
+st.subheader("Powered by :blue[OpenAI] + :blue[Streamlit] + :blue[Langchain] + :blue[LlamaIndex]")
     
 #Define tools
 options = [
     "AI Tutor",
+    "Crash Course",
     "Doc Q&A",
     "Video Q&A",
     "CSV Q&A",
-    "Crash Course"
+    "College Explorer"
 ]
 icons = [
     "🤖",
+    "🚀",
     "📖",
     "📹",
     "📈",
-    "🚀"
+    "🔍"
 ]
 category_to_page = {
     "AI Tutor": "ai_tutor",
+    "Crash Course": "crash_course",
     "Doc Q&A": "doc_q&a",
     "Video Q&A": "video_q&a",
     "CSV Q&A": "csv_q&a",
-    "Crash Course": "crash_course",
+    "College Explorer": "college_explorer"
 }
 
 category = pills("Choose a tool", options, icons, index=None, clearable=True)

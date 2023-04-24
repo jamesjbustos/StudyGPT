@@ -6,3 +6,6 @@ streamlit-extras
 llama-index
 pinecone-client
 transformers
+folium
+streamlit-folium
+requests
