@@ -11,7 +11,8 @@ from langchain import OpenAI
 # Streamlit page configurations and title
 st.set_page_config(
     page_title="StudyGPT",
-    page_icon=":mortar_board:"
+    page_icon=":mortar_board:",
+    initial_sidebar_state = "collapsed"
 )
 st.title("🕹️ Youtube Q&A")
 st.caption("✨ Your personal video assistant - upload and start asking questions!")

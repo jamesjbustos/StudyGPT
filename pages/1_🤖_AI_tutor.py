@@ -9,7 +9,8 @@ def initialize_streamlit():
     """Set up Streamlit page configurations and title."""
     st.set_page_config(
         page_title="StudyGPT",
-        page_icon=":mortar_board:"
+        page_icon=":mortar_board:",
+        initial_sidebar_state = "collapsed"
     )
     st.title("🤖 AI Tutor")
     st.caption("✨ Your AI study partner, ask me anything!")
