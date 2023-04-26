@@ -29,6 +29,7 @@ def save_uploaded_file(uploadedfile):
 uploaded_file = st.file_uploader(" ", accept_multiple_files=False,
                                   label_visibility='collapsed', type=['csv'])
 
+# ------ Create agent and chat ------
 if uploaded_file is not None:
     # Create data folder if it doesn't exist
     if not os.path.exists('./data'):
@@ -44,7 +45,7 @@ if uploaded_file is not None:
     agent = create_csv_agent(OpenAI(temperature=0), uploaded_file_path, verbose=True)
 
     # Display uploaded CSV file as DataFrame
-    df = pd.read_csv(uploaded_file_path)
+    df = pd.read_csv(uploaded_file)
     st.dataframe(df)
 
     with st.form("chat_form", clear_on_submit=True):
