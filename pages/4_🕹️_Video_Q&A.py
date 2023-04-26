@@ -28,6 +28,8 @@ pinecone_enviroment = st.secrets["PINECONE_ENVIRONMENT"]
 if 'vid_response' not in st.session_state:
     st.session_state.vid_response = ''
 
+if 'video_placeholder_initialized' not in st.session_state:
+    st.session_state.video_placeholder_initialized = False
 
 # ------ Load and index video ------
 video_link = st.text_input("Enter the link to your YouTube video 👇")
@@ -53,16 +55,25 @@ if video_link:
     llm_predictor = LLMPredictor(llm=OpenAI(temperature=0, model_name="text-davinci-003"))
     prompt_helper = PromptHelper(max_input_size=4096, num_output=256, max_chunk_overlap=20)
     service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
+    metadata_filters = {"title": video_link}
 
     # Create the GPTPineconeIndex
     index = GPTPineconeIndex.from_documents(
         documents,
+        metadata_filters = {"title": video_link},
         pinecone_index=pinecone_index,
         service_context=service_context,
         add_sparse_vector=True,
     )
 
 if index is not None:
+    if not st.session_state.video_placeholder_initialized:
+        # Add a placeholder for the output
+        output_placeholder = st.markdown("🤖 **AI:** I'm here to help you analyze this video! Ask me questions about the content, and I'll do my best to provide insights.\n\n")
+        st.session_state.video_placeholder_initialized = True
+    else:
+        output_placeholder = st.empty()
+
     with st.form("chat_form", clear_on_submit=True):
         col1, col2 = st.columns([10, 1])
         user_prompt = col1.text_area(" ", max_chars=2000, key="prompt",
@@ -72,5 +83,5 @@ if index is not None:
     if submitted and user_prompt:
         with st.spinner("💭 Waiting for response..."):
             st.session_state.vid_response = index.query(user_prompt)
-        response_md = f"🤖 **AI:** {st.session_state.vid_response}\n\n"
-        st.markdown(response_md)
+        response_md = f"🤓 **YOU:** {user_prompt}\n\n🤖 **AI:** {st.session_state.vid_response}\n\n"
+        output_placeholder.markdown(response_md)  # Update the content of the placeholder
