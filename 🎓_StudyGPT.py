@@ -40,7 +40,7 @@ category_to_page = {
     "College Explorer": "college_explorer"
 }
 
-category = pills("Choose a tool", options, icons, index=None, clearable=True)
+category = pills("Select a tool", options, icons, index=None, clearable=True)
 
 # Check if the category is in the dictionary and switch to the appropriate page
 if category in category_to_page:
