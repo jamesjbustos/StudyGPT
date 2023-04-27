@@ -46,6 +46,8 @@ category = pills("Choose a tool", options, icons, index=None, clearable=True)
 if category in category_to_page:
     switch_page(category_to_page[category])
 
+st.write('---')
+
 # Description
 st.markdown('''##### 🤖 AI Tutor
 Learn from an advanced AI tutor. Ask questions, get explanations and interact with the tutor in a chat-based format. Perfect for students and learners who want to deepen their understanding of complex topics in a personalized and engaging way.''')
