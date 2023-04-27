@@ -50,16 +50,18 @@ st.write('---')
 
 # Description
 st.markdown('''##### 🤖 AI Tutor
-Learn from an advanced AI tutor. Ask questions, get explanations and interact with the tutor in a chat-based format. Perfect for students and learners who want to deepen their understanding of complex topics in a personalized and engaging way.''')
+Learn from an advanced AI tutor. Ask questions, get explanations and interact with the tutor in a chat-based format.''')
 
 st.markdown('''##### 🚀 Crash Course
-Quickly learn any topic with a AI-powered Crash Course feature. Enter a topic and receive a personalized crash course in just under a minute. Perfect for learners and students who need to quickly grasp the essentials of a topic.''')
+Quickly learn any topic with a AI-powered Crash Course feature. Enter a topic and receive a personalized crash course in just under a minute.''')
 
 st.markdown('''##### 📖 Doc Q&A
-Get quick answers to your PDF-related questions with our easy-to-use Doc Q&A feature. Simply upload your PDF, ask your questions and receive instant responses. Perfect for students and learners who need help with their PDF documents.''')
+Get quick answers to your PDF-related questions with a easy-to-use Doc Q&A feature. Simply upload your PDF, ask your questions and receive instant responses.''')
 
 st.markdown('''##### 🕹️ Video Q&A 
 Get quick answers to your video-related questions with a easy-to-use Video Q&A feature. Simply upload your video, ask your questions and receive instant responses.''')
 
 st.markdown('''##### 📈 CSV Q&A
 Get quick answers to your CSV-related questions with our easy-to-use CSV Q&A feature. Simply upload your CSV file, ask your questions and receive instant responses.''')
+
+st.write('---')
