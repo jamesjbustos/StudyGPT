@@ -59,7 +59,7 @@ if user_topic:
     sections = parse_content(outline)
     
     if sections:
-        with st.spinner('✨ Generating course ✨'):
+        with st.spinner('🧙‍♂️ Generating course...'):
             # Generate content if not already available
             if not os.path.exists(f"{user_topic}_content.json"):
                 subprocess.run([f"{sys.executable}", "generate_content.py", user_topic, *sections])
