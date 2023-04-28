@@ -21,7 +21,7 @@ options = [
     "Doc Q&A",
     "Video Q&A",
     "CSV Q&A",
-    "College Explorer"
+    "Nexus"
 ]
 icons = [
     "🤖",
@@ -29,7 +29,7 @@ icons = [
     "📖",
     "🕹️",
     "📈",
-    "🔍"
+    "🔗"
 ]
 category_to_page = {
     "AI Tutor": "ai_tutor",
@@ -37,7 +37,7 @@ category_to_page = {
     "Doc Q&A": "doc_q&a",
     "Video Q&A": "video_q&a",
     "CSV Q&A": "csv_q&a",
-    "College Explorer": "college_explorer"
+    "Nexus": "nexus"
 }
 
 category = pills("Select a tool", options, icons, index=None, clearable=True)
