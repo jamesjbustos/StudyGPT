@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-st.tilte('🔗 Nexus')
+st.title('🔗 Nexus')
 
 st.write('Coming soon...')
 
