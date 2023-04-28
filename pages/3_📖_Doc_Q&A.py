@@ -72,16 +72,14 @@ if uploaded_file is not None:
     prompt_helper = PromptHelper(max_input_size=4096, num_output=256, max_chunk_overlap=20)
     service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor, prompt_helper=prompt_helper)
     metadata_filters = {"title": uploaded_file.name}
-    
     # Create the GPTPineconeIndex
-    with st.spinner('💾 Embedding document...'):
-        index = GPTPineconeIndex.from_documents(
-            documents,
-            pinecone_index=pinecone_index,
-            metadata_filters=metadata_filters,
-            service_context=service_context,
-            add_sparse_vector=True,
-        )
+    index = GPTPineconeIndex.from_documents(
+        documents,
+        pinecone_index=pinecone_index,
+        metadata_filters=metadata_filters,
+        service_context=service_context,
+        add_sparse_vector=True,
+    )
 
 
 if index is not None:
