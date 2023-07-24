@@ -65,7 +65,7 @@ if uploaded_file is not None:
         api_key=pinecone_api_key, 
         environment=pinecone_enviroment
     )
-    pinecone_index = pinecone.Index("studygpt")
+    pinecone_index = pinecone.Index("studygpt-index")
 
     # Define llm and index
     llm_predictor = LLMPredictor(llm=OpenAI(temperature=0, model_name="text-davinci-003"))

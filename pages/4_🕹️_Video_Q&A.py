@@ -46,7 +46,7 @@ if video_link:
         api_key=pinecone_api_key,
         environment=pinecone_enviroment
     )
-    pinecone_index = pinecone.Index("studygpt")
+    pinecone_index = pinecone.Index("studygpt-index")
 
     # Display uploaded CSV file as DataFrame
     st.video(video_link)
