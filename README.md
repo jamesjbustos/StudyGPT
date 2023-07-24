@@ -4,7 +4,7 @@ StudyGPT is an AI-powered project that aims to provide learners and students wit
 
 ## Application Objective:
 
-StudyGPT serves as an AI-powered application designed to address the requirements of learners and students. Its purpose is to empower users with AI-driven solutions, making learning more efficient and effective. The application focuses on providing a range of features tailored to the needs of non-technical individuals.
+StudyGPT serves as an AI-powered application designed to address the requirements of learners and students. Its purpose is to empower users with AI-driven solutions, making learning more efficient and effective.
 
 ## Features:
 
