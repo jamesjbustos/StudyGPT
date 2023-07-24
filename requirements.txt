@@ -1,11 +1,11 @@
 langchain==0.0.142
-streamlit
+streamlit==1.19.0
 openai==0.27.2
-streamlit-pills
-streamlit-extras
+streamlit-pills==0.3.0
+streamlit-extras==0.2.7
 llama-index==0.5.18
 pinecone-client==2.2.1
-transformers
+transformers==4.28.1
 folium
 streamlit-folium
-requests
+requests==2.28.2
