@@ -1,6 +1,6 @@
 # StudyGPT
 
-StudyGPT is an AI-powered project that aims to provide learners and students with various tools to enhance their learning experience. The application introduces and bridges the gap in AI usage for non-technical users, specifically targeting learners and students.
+StudyGPT is an AI-powered project that aims to provide learners and students with various tools to enhance their learning experience. The application introduces AI usage for non-technical users, specifically targeting learners and students.
 
 ## Application Objective:
 
