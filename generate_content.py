@@ -38,8 +38,7 @@ def async_main(topic, sections):
 
   save_to_json(topic, sections, contents)
 
-  # print('\033[1m' + f"Concurrent executed in {elapsed:0.2f} seconds." +
-  #       '\033[0m')
+
 
 if __name__ == "__main__":
   user_topic = sys.argv[1]
