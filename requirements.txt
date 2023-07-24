@@ -1,10 +1,10 @@
-langchain
+langchain==0.0.142
 streamlit
-openai
+openai==0.27.2
 streamlit-pills
 streamlit-extras
-llama-index
-pinecone-client
+llama-index==0.5.18
+pinecone-client==2.2.1
 transformers
 folium
 streamlit-folium
