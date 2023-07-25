@@ -1,22 +1,20 @@
 # StudyGPT
 
-StudyGPT is an AI-powered project that aims to provide learners and students with various tools to enhance their learning experience. The application introduces AI usage for non-technical users, specifically targeting learners and students.
+![main_page](https://github.com/jamesjbustos/StudyGPT/assets/45052719/cf7db466-73f2-4691-b93f-e04e0acf2af0)
 
-## Application Objective:
+StudyGPT is an AI-powered project that aims to provide learners and students with various tools to enhance their learning experience. The application utilizes LLM’s to make learning more efficient and effective.
 
-StudyGPT serves as an AI-powered application designed to address the requirements of learners and students. Its purpose is to empower users with AI-driven solutions, making learning more efficient and effective.
+## Features
 
-## Features:
+- [x] **AI Tutor**: Powered by OpenAI's GPT-3.5-turbo LLM, the AI Tutor feature allows users to interact with a tutor system in a chat-based format.
 
-1. **AI Tutor**: Powered by OpenAI's GPT-3.5-turbo LLM, the AI Tutor feature allows users to interact with a tutor system in a chat-based format.
+- [x] **Doc Q & A**: This feature enables users to submit PDF documents and interact with them by asking questions. The application parses the document, splits the text, and utilizes OpenAI embeddings for indexing and responding to queries.
 
-2. **Doc Q & A**: This feature enables users to submit PDF documents and interact with them by asking questions. The application parses the document, splits the text, and utilizes OpenAI embeddings for indexing and responding to queries.
+- [x] **Video Q & A**: Similar to Doc Q & A, this feature accepts YouTube links and uses the video transcript to allow users to interact with the content through queries.
 
-3. **Video Q & A**: Similar to Doc Q & A, this feature accepts YouTube links and uses the video transcript to allow users to interact with the content through queries.
+- [x] **Crash Course**: Utilizing GPT-3.5-turbo and Asynchronous calls, Crash Course generates short, informative modules to teach users the basics of any topic they specify.
 
-4. **Crash Course**: Utilizing GPT-3.5-turbo and Asynchronous calls, Crash Course generates short, informative modules to teach users the basics of any topic they specify.
-
-## Tech Stack:
+## Technologies Used
 
 - **OpenAI - GPT-3.5-turbo LLM**: The core AI model responsible for powering several features in StudyGPT.
 
@@ -28,7 +26,7 @@ StudyGPT serves as an AI-powered application designed to address the requirement
 
 - **Pinecone**: Pinecone is a vector database designed for machine learning applications and is a powerful tool for efficient and accurate vector-based search.
 
-## Installation:
+## Installation
 
 To run StudyGPT locally, follow these steps:
 
