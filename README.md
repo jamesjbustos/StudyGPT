@@ -8,9 +8,6 @@ StudyGPT serves as an AI-powered application designed to address the requirement
 
 ## Features:
 
-### Main Page:
-The main page serves as a directory, providing users with easy access to all available features:
-
 1. **AI Tutor**: Powered by OpenAI's GPT-3.5-turbo LLM, the AI Tutor feature allows users to interact with a tutor system in a chat-based format.
 
 2. **Doc Q & A**: This feature enables users to submit PDF documents and interact with them by asking questions. The application parses the document, splits the text, and utilizes OpenAI embeddings for indexing and responding to queries.
