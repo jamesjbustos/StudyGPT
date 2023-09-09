@@ -20,7 +20,7 @@ StudyGPT is an AI-powered project that aims to provide learners and students wit
 
 - **Streamlit**: The application is built using Streamlit, a user-friendly Python library for creating interactive web applications.
 
-- **Langchain**: Langchain technology is utilized to handle natural language processing tasks within the application.
+- **Langchain**: Langchain framework is utilized to handle natural language processing tasks within the application.
 
 - **LlamaIndex**: The LlamaIndex library is used for embedding text and indexing documents in Doc Q & A and Video Q & A features.
 
