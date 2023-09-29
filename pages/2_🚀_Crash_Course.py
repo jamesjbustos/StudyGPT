@@ -16,7 +16,7 @@ st.title("🚀 Crash Course")
 st.caption("✨ Your ultimate learning companion - choose any topic and accelerate your growth!")
 
 # Load API Key
-api_key = st.secrets["OPENAI_API_KEY"]
+api_key = st.session_state["OPENAI_API_KEY"]
 
 def load_content_from_json(topic, expected_sections_count):
     if not os.path.exists(f"{topic}_content.json"):

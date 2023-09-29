@@ -15,7 +15,7 @@ st.title("📈 CSV Q&A")
 st.caption("✨ Your personal CSV data assistant - upload and start asking questions!")
 
 # Load API Key
-api_key = st.secrets["OPENAI_API_KEY"]
+api_key = st.session_state["OPENAI_API_KEY"]
 
 # ------ Initialize Session State ------
 if 'csv_response' not in st.session_state:

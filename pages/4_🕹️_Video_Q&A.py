@@ -20,7 +20,7 @@ st.caption("✨ Your personal video assistant - upload and start asking question
 index = None
 
 # Load API Key
-api_key = st.secrets["OPENAI_API_KEY"]
+api_key = st.session_state["OPENAI_API_KEY"]
 pinecone_api_key = st.secrets["PINECONE_API_KEY"]
 pinecone_enviroment = st.secrets["PINECONE_ENVIRONMENT"]
 
