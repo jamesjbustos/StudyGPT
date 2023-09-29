@@ -21,7 +21,6 @@ options = [
     "Doc Q&A",
     "Video Q&A",
     "CSV Q&A",
-    "Nexus"
 ]
 icons = [
     "🤖",
@@ -29,7 +28,6 @@ icons = [
     "📖",
     "🕹️",
     "📈",
-    "🔗"
 ]
 category_to_page = {
     "AI Tutor": "ai_tutor",
@@ -37,7 +35,6 @@ category_to_page = {
     "Doc Q&A": "doc_q&a",
     "Video Q&A": "video_q&a",
     "CSV Q&A": "csv_q&a",
-    "Nexus": "nexus"
 }
 
 category = pills("Select a tool", options, icons, index=None, clearable=True)
@@ -46,6 +43,15 @@ category = pills("Select a tool", options, icons, index=None, clearable=True)
 if category in category_to_page:
     switch_page(category_to_page[category])
 
+api_key = st.text_input("Enter your OpenAI API key", type='password')
+
+if api_key:
+    st.session_state["OPENAI_API_KEY"] = api_key
+
+if 'OPENAI_API_KEY' not in st.session_state or not st.session_state['OPENAI_API_KEY']:
+    st.error("Please provide an OpenAI API key to use the application.")
+elif 'OPENAI_API_KEY' in st.session_state and st.session_state['OPENAI_API_KEY']:
+    st.success("OpenAI API key loaded successfully!")
 st.write('---')
 
 # Description
